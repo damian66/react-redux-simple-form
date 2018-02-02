@@ -2,12 +2,14 @@
   "name": "react-redux-simple-form",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Damian Bartosik",
+  "author": "Damian Bartosik",  
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d client/dist",
     "build": "webpack --config webpack.dev.js",
     "build-prod": "webpack --config webpack.prod.js",
     "server": "nodemon server.js",
-    "start": "concurrently --kill-others-on-fail \"nodemon server/server\" \"webpack-dev-server --inline --color --config webpack.dev.js\"",
+    "start": "nodemon server/server & webpack-dev-server --inline --color --config webpack.dev.js",
     "test": "jest",
     "test-update": "jest -u"
   },
@@ -35,7 +37,6 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-react": "^6.24.1",
-    "concurrently": "^3.5.1",
     "css-loader": "^0.28.9",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",

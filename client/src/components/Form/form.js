@@ -111,7 +111,7 @@ class Form extends React.Component {
                 if(currentTry < 5) {
                     that.loadData(currentTry + 1);
                 } else {
-                    this.props.setOutput("Cannot load data from server!", data.error)
+                    this.props.setOutput("Cannot load data from server!", 1)
                     this.setState({
                         loading: false
                     })
