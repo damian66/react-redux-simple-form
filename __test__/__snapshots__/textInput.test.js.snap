@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`>>>TextInput --- Snapshot +++capturing Snapshot of TextInput 1`] = `
+<div
+  className="wrapper"
+  tooltip={undefined}
+>
+  <input
+    className="input"
+    id="email"
+    onBlur={[Function]}
+    onChange={undefined}
+    onFocus={undefined}
+    placeholder={null}
+    type="text"
+    value={undefined}
+  />
+</div>
+`;

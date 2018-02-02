@@ -1,0 +1,91 @@
+.container {
+    background: #FFFFFF;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;        
+    padding: 20px 24px;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);        
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .05);
+    transition: height 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+    overflow: hidden;
+}
+
+.form {
+    
+}
+.form * {    
+    font-family: Helvetica, Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    color: #37474F;    
+}
+.form > label {
+    display: block;
+}
+.form > label:not(:first-of-type) {
+    margin-top: 24px;
+}
+.form > label > span {
+    font-weight: bold;
+    opacity: .8;
+    transition: opacity 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+.form > label:hover > span {
+    opacity: 1;
+}
+
+.requiredStar {
+    color: #F56B62;
+}
+
+.submitWrapper {
+    margin-top:32px;    
+}
+
+.submit {
+    display: block;
+    position: relative;
+    z-index: 2;
+    background: #00ACEA;
+    color: #FFFFFF;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0 auto;    
+    padding: 10px 14px;
+    border: solid transparent 1px;
+    border-bottom: solid #0288D1 2px;    
+    box-sizing: border-box;
+    border-radius: 3px;    
+    transition: border 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);    
+}
+.submit:focus {
+    outline: none;
+}
+
+.datePickerWrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .25);
+    z-index: 10;
+    visibility: hidden;
+    opacity: 0;    
+    transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);  
+}
+
+.datePicker {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.datePickerVisible {
+    opacity: 1;    
+    visibility: visible;
+}

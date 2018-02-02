@@ -1,0 +1,53 @@
+.wrapper {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+}
+
+.input {
+    display: block;
+    margin-top: 6px;
+    padding: 6px 12px;
+    border: solid #F0F2F4 1px;
+    border-bottom: solid #CFD8DC 2px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 2px;    
+    transition: border 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+.input:focus {
+    outline: none;
+    border-color: #00ACEA;
+    box-shadow: 0 0 3px rgba(0, 172, 234, .75);
+}
+
+.input::placeholder {    
+    opacity: .5;
+}
+
+.error {
+    border-bottom-color: #F56B62;
+    border-color: #F56B62;
+}
+
+.correct {
+    border-bottom-color: #76C47D;
+}
+
+.calendar {
+    position: absolute;
+    right: 0;
+    width: 1em;
+    top: 0;    
+    padding: 7px 12px 4px 12px;
+    margin-top: 6px;
+    fill: #37474F;
+    cursor: pointer;
+}
+.calendar * {
+    pointer-events: none;
+}
+
+.hidden {
+    display: none;
+}

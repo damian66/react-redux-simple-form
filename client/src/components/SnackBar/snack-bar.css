@@ -1,0 +1,27 @@
+.snackBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1em;
+    text-align: center;
+    color: #FFFFFF;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    opacity: 0;
+    transform: translateY(-50%);
+    transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);  
+}
+
+.error, .success {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.error {
+    background: #F56B62;    
+}
+
+.success {
+    background: #76C47D;
+}
