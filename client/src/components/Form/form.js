@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './form.css'
+import style from './form.module.css'
 import { connect } from 'react-redux'
 
 import { setOutput } from './../../actions/output'
@@ -15,38 +15,20 @@ class Form extends React.Component {
             calendar: {
                 show: false,
                 key: null
-            }
+            },
+            loading: true
         }
     }    
-    componentDidMount() {                
+    componentDidMount() {
+        this.setState({
+            loading: true
+        })            
         this.loadData();
-    }   
-    // currentTry - counts how many times tried to load data
-    loadData(currentTry = 0) {
-        const that = this;
-        fetch("/api/get")
-        .then(res => res.json())
-        .then(data => {
-            if(data && data.data && data.data.values) {                
-                data.data.values.forEach(item => {
-                    this.props.setValue(item.key, item.value)
-                })
-            } else {
-                this.props.setOutput("Unexpected error. Cannot load data!", data.error)
-            }
-        }).catch(e => {
-            setTimeout(() => {
-                if(currentTry < 5) {
-                    that.loadData(currentTry + 1);
-                } else {
-                    this.props.setOutput("Cannot load data from server!", data.error)
-                }
-            }, 200);
-        });
-    } 
+    }       
     renderFields() {        
         if(!this.props.fields || !this.props.fields.length) return;                          
-        return this.props.fields.map((field, i) => {                                    
+        return this.props.fields.map((field, i) => {         
+            let value = this.props.fields.filter(f => f.key === field.key)[0].value;                              
             return (
                 <label key={i}>
                     <span>
@@ -66,6 +48,7 @@ class Form extends React.Component {
                         onChange={this.change.bind(this)}
                         onBlur={this.blur.bind(this)}
                         onShowCalendar={this.showCalendar.bind(this)}
+                        value={value}
                     />
                 </label>
             )
@@ -73,7 +56,7 @@ class Form extends React.Component {
     }
     render() {            
         return (
-            <React.Fragment>                
+            <React.Fragment>                            
                 <div 
                     className={`${style.datePickerWrapper} ${this.state.calendar.show ? style.datePickerVisible : ""}`}
                     id="calendarWrapper"
@@ -87,7 +70,10 @@ class Form extends React.Component {
                         />
                     </div>
                 </div>
-                <div className={style.container}>                
+                <div className={style.container}>   
+                    <div className={`${style.loadingWrapper} ${this.state.loading ? style.loadingWrapperVisible : ``}`}>
+                        <div></div>
+                    </div>             
                     <form className={style.form}>
                         {this.renderFields()}
                         <div className={style.submitWrapper}>
@@ -103,6 +89,52 @@ class Form extends React.Component {
             </React.Fragment>
         )
     }
+
+    //# Methods    
+    loadData(currentTry = 0) { // currentTry - counts how many times tried to load data
+        const that = this;
+        fetch("/api/get")
+        .then(res => res.json())
+        .then(data => {
+            if(data && data.data && data.data.values) {                
+                data.data.values.forEach(item => {
+                    this.props.setValue(item.key, item.value)
+                })
+                this.setState({
+                    loading: false
+                })
+            } else {
+                this.props.setOutput("Unexpected error. Cannot load data!", data.error)
+            }
+        }).catch(e => {
+            setTimeout(() => {
+                if(currentTry < 5) {
+                    that.loadData(currentTry + 1);
+                } else {
+                    this.props.setOutput("Cannot load data from server!", data.error)
+                    this.setState({
+                        loading: false
+                    })
+                }
+            }, 200);
+        });
+    } 
+    parseDate(value) {
+        if(!value) return "";
+
+        // Pad dates with zeros
+        const padStart = (number) => number.toString().length === 1 ? `0${number}` : number;
+
+        var date = new Date(value);
+        
+        const day = padStart(date.getDate());
+        const month = padStart(date.getMonth() + 1);
+        const year = date.getFullYear();
+
+        return `${month}/${day}/${year}`;
+    }
+
+    //# Events
     change(e) {        
         this.props.setValue(e.target.id, e.target.value);
     }
@@ -115,9 +147,9 @@ class Form extends React.Component {
             }    
         });
         return false;
-    }
+    }    
     selectDate(date) {                        
-        this.props.setValue(this.state.calendar.key, date.getTime());        
+        this.props.setValue(this.state.calendar.key, this.parseDate(date.getTime()));        
         this.hideCalendar.bind(this)()
     }
     hideCalendar(e) {

@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const combineLoaders = require('webpack-combine-loaders');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -27,12 +27,21 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        exclude: /\.module\.css$/,
+        //loader: 'style-loader!css-loader'
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader?localIdentName=""'
+      }),
+      },
+      {
+        test: /\.module\.css$/,
         exclude: /(node_modules)/,
         use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
             use: 'css-loader?modules,localIdentName="[name]-[local]-[hash:base64:6]"'
         }),
-      } 
+      },      
     ]
   },
   plugins: [
@@ -40,6 +49,10 @@ module.exports = {
     new ExtractTextPlugin({
       filename: 'style.css',
       allChunks: true
+    }),
+    new HtmlWebpackPlugin({
+      template: "./client/src/index.template.ejs",
+      hash: true     
     })
   ]
 };

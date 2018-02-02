@@ -17,7 +17,7 @@ npm install
 
 To run both client and server, simple use this npm script
 ```
-npm run start-dev
+npm run start
 ```
 
 ## Running the tests

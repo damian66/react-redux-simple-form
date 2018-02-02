@@ -1,14 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import style from './text-input.css'
+import style from './text-input.module.css'
 
 export class TextInput extends React.Component {
     constructor(props) {
-        super(props)
-        this.state = {            
-            status: 0,
-            tooltip: null
-        }                  
+        super(props)            
     }    
     getInputClassName() {
         let className = style.input;
@@ -22,23 +18,13 @@ export class TextInput extends React.Component {
     }
     render() {        
         const placeholder = this.props.placeholder ? this.props.placeholder : null;
-        let type = this.props.type && this.props.type !== `date` ? this.props.type : "text";        
-        const className = style.input
-        const tooltip = this.props.error === false ? null : this.props.error;        
-
-        let value = this.props.fields.filter(field => field.key === this.props.id)[0].value;   
-        if(this.props.type === "date") value = this.parseDate(value);         
+        let type = this.props.type && this.props.type !== `date` ? this.props.type : "text";                
+        const tooltip = this.props.error === false ? null : this.props.error;                
 
         let maxLength = this.props.maxLength ? this.props.maxLength : null;
         if(this.props.type === `date`) maxLength = 12;
 
-        let element = null;
-
-        setTimeout(() => {
-            if(element && value) {
-                element.value = value;
-            }
-        }, 0);
+        const value = this.props.value ? this.props.value : "";
                     
         return (
             <div 
@@ -54,8 +40,8 @@ export class TextInput extends React.Component {
                     onBlur={this.blur.bind(this)} 
                     onChange={this.props.onChange}
                     onFocus={this.props.onFocus} 
-                    maxLength={maxLength}                                       
-                    ref={(el) => element = el}
+                    maxLength={maxLength}                                                           
+                    value={value}
                 />
                 <div 
                     className={`${style.calendar} ${this.props.type !== `date` ? style.hidden : ``}`}
@@ -80,20 +66,6 @@ export class TextInput extends React.Component {
         if(this.props.onBlur) {
             this.props.onBlur(e);
         }
-    }
-    parseDate(value) {
-        if(!value) return "";
-
-        // Pad dates with zeros
-        const padStart = (number) => number.toString().length === 1 ? `0${number}` : number;
-
-        var date = new Date(value);
-        
-        const day = padStart(date.getDate());
-        const month = padStart(date.getMonth() + 1);
-        const year = date.getFullYear();
-
-        return `${month}/${day}/${year}`;
     }
 }
 

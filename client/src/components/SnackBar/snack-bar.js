@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import style from './snack-bar.css'
+import style from './snack-bar.module.css'
 
 export class SnackBar extends React.Component {
     constructor(props) {
@@ -46,11 +46,8 @@ function mapStateToProps(state) {
     };
 }
 
-const mapDispatchToProps = dispatch => {    
-    return {}
-  }
+
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
 )(SnackBar);

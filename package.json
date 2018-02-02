@@ -1,5 +1,5 @@
 {
-  "name": "brainhub-form",
+  "name": "react-redux-simple-form",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Damian Bartosik",
@@ -7,7 +7,7 @@
     "build": "webpack --config webpack.dev.js",
     "build-prod": "webpack --config webpack.prod.js",
     "server": "nodemon server.js",
-    "start-dev": "concurrently --kill-others-on-fail \"nodemon server/server\" \"webpack-dev-server --inline --color --config webpack.dev.js\"",
+    "start": "concurrently --kill-others-on-fail \"nodemon server/server\" \"webpack-dev-server --inline --color --config webpack.dev.js\"",
     "test": "jest",
     "test-update": "jest -u"
   },
@@ -40,6 +40,7 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.30.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.1.4",
     "node-jsx": "^0.13.3",
