@@ -1,7 +1,7 @@
 
 # Simple react-redux form
 
-[Demo](https://damian66.github.io/react-redux-simple-form/)
+[Demo](https://react-redux-simple-form.herokuapp.com/)
 
 Simple react-redux form that stores data in MongoDB.
 
