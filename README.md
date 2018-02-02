@@ -1,6 +1,8 @@
 
 # Simple react-redux form
 
+[Demo](https://damian66.github.io/react-redux-simple-form/)
+
 Simple react-redux form that stores data in MongoDB.
 
 ## Getting Started
@@ -43,7 +45,6 @@ npm test-update
 * [Redux](https://redux.js.org/) - Predictable state container
 * [Babel](https://babeljs.io/) - The compiler for writing next generation JavaScript
 * [Jest](https://facebook.github.io/jest/) - Delightful JavaScript Testing
-* [Enzyme](https://github.com/airbnb/enzyme) - 
-JavaScript Testing utilities for React
+* [Enzyme](https://github.com/airbnb/enzyme) - JavaScript Testing utilities for React
 * [react-css-modules](https://github.com/gajus/react-css-modules) - React CSS Modules implement automatic mapping of CSS modules
 * [react-infinite-calendar](https://github.com/clauderic/react-infinite-calendar) - Date picker
