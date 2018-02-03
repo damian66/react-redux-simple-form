@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --config webpack.dev.js",
     "build-prod": "webpack --config webpack.prod.js",
-    "start": "npm run build-prod & nodemon server/server",
+    "start": "npm run build-prod & node server/server",
+    "start_dev": "npm run build-prod & nodemon server/server",
     "test": "jest",
     "test-update": "jest -u"
   },
