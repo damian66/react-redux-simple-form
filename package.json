@@ -2,15 +2,11 @@
   "name": "react-redux-simple-form",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Damian Bartosik",
-  "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d client/dist",
+  "author": "Damian Bartosik",  
+  "scripts": {    
     "build": "webpack --config webpack.dev.js",
-    "build-prod": "webpack --config webpack.prod.js",
-    "server": "nodemon server.js",
-    "start": "nodemon server/server & webpack-dev-server --inline --color --config webpack.dev.js",
-    "start_nodeonly": "nodemon server/server",
+    "build-prod": "webpack --config webpack.prod.js",    
+    "start": "npm run build-prod & nodemon server/server",
     "test": "jest",
     "test-update": "jest -u"
   },
@@ -23,10 +19,7 @@
       "<rootDir>/__test__/setup.js"
     ]
   },
-  "dependencies": {
-    "babel-preset-stage-2": "^6.24.1",
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2",
+  "dependencies": {    
     "mongodb": "^3.0.2",
     "react": "^16.2.0",
     "react-addons-css-transition-group": "^15.6.2",
@@ -54,6 +47,9 @@
     "webpack": "^3.10.0",
     "webpack-babel-jest": "^1.0.4",
     "webpack-combine-loaders": "^2.0.3",
-    "webpack-merge": "^4.1.1"
+    "webpack-merge": "^4.1.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
   }
 }

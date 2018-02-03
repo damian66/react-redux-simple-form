@@ -12,18 +12,12 @@ let db;
 
 app.use(express.static(path.resolve("client/dist")))
 
-require('http').createServer(function (request, response) {
-    request.addListener('end', function () {        
-        file.serve(request, response);
-    }).resume();
-}).listen(port);
-
 const mongodbConnectionString = "mongodb://admin:admin@react-form-shard-00-00-ifhqk.mongodb.net:27017,react-form-shard-00-01-ifhqk.mongodb.net:27017,react-form-shard-00-02-ifhqk.mongodb.net:27017/test?ssl=true&replicaSet=react-form-shard-0&authSource=admin"
 MongoClient.connect(mongodbConnectionString, (err, database) => {
   if (err) return console.log(err)
   db = database.db("app")
 
-  app.listen(8080, () => console.log(`Listening on port 8080`));
+  app.listen(port, () => console.log(`Listening on port ${port}`));
 })
 
 app
