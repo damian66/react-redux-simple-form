@@ -6,10 +6,11 @@
   "scripts": {
     "build": "webpack --config webpack.dev.js",
     "build-prod": "webpack --config webpack.prod.js",
-    "start": "npm run build-prod & node server/server",
+    "start": "node server/server",
     "start_dev": "npm run build-prod & nodemon server/server",
     "test": "jest",
-    "test-update": "jest -u"
+    "test-update": "jest -u",
+    "heroku-postbuild": "webpack -p --config webpack.prod.js --progress"
   },
   "jest": {
     "moduleNameMapper": {
