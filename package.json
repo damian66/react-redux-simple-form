@@ -21,6 +21,9 @@
       "<rootDir>/__test__/setup.js"
     ]
   },
+  "engines": {
+    "node": "9.2.0"
+  },
   "dependencies": {
     "mongodb": "^3.0.2",
     "react": "^16.2.0",
