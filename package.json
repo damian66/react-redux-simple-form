@@ -2,10 +2,10 @@
   "name": "react-redux-simple-form",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Damian Bartosik",  
-  "scripts": {    
+  "author": "Damian Bartosik",
+  "scripts": {
     "build": "webpack --config webpack.dev.js",
-    "build-prod": "webpack --config webpack.prod.js",    
+    "build-prod": "webpack --config webpack.prod.js",
     "start": "npm run build-prod & nodemon server/server",
     "test": "jest",
     "test-update": "jest -u"
@@ -19,7 +19,7 @@
       "<rootDir>/__test__/setup.js"
     ]
   },
-  "dependencies": {    
+  "dependencies": {
     "mongodb": "^3.0.2",
     "react": "^16.2.0",
     "react-addons-css-transition-group": "^15.6.2",
@@ -31,14 +31,18 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "body-parser": "^1.18.2",
     "css-loader": "^0.28.9",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "express": "^4.16.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^2.30.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.1.4",
     "node-jsx": "^0.13.3",
+    "nodemon": "^1.14.12",
     "react-css-modules": "^4.7.1",
     "react-test-renderer": "^16.2.0",
     "redux-mock-store": "^1.5.1",
@@ -47,9 +51,6 @@
     "webpack": "^3.10.0",
     "webpack-babel-jest": "^1.0.4",
     "webpack-combine-loaders": "^2.0.3",
-    "webpack-merge": "^4.1.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2"
+    "webpack-merge": "^4.1.1"
   }
 }
