@@ -1,22 +1,18 @@
-export default function outputReducer(state, action) {
-    // Initial state
-    if (!state) {        
-        state = {
-            msg: "",
-            state: "",
-            time: 0
-        };
-    }
+const defaultState = {
+  msg: '',
+  state: '',
+  time: 0,
+};
 
-    if (action.type === 'SET_MESSAGE') {        
-        return {
-            ...state, 
-            msg: action.msg,
-            state: action.state,
-            time: Math.random()
-        }
-    }
-    else {
-        return state;
-    }
+export default function outputReducer(state = defaultState, action) {
+  if (action.type === 'SET_MESSAGE') {
+    return {
+      ...state,
+      msg: action.msg,
+      state: action.state,
+      time: Math.random(),
+    };
+  }
+
+  return state;
 }

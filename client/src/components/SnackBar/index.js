@@ -1,6 +1,6 @@
-import ConnectedSnackBar, { SnackBar } from './snack-bar'
+import ConnectedSnackBar, { SnackBar } from './SnackBar';
 
-export { 
-    SnackBar
-}
+export {
+  SnackBar,
+};
 export default ConnectedSnackBar;

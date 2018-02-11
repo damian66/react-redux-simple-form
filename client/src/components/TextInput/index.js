@@ -1,5 +1,7 @@
-import ConnectedTextInput, { TextInput } from './text-input'
+import ConnectedTextInput, { TextInput } from './TextInput';
+
 export {
-    TextInput
-}
+  TextInput,
+};
+
 export default ConnectedTextInput;
